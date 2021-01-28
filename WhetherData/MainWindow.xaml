@@ -1,0 +1,50 @@
+﻿<Window x:Class="WhetherData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WhetherData"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Button Content="Sort by date" Command="{Binding SortByDateCommand}" Grid.Column="0" BorderThickness="0"/>
+        <Button Content="Sort by tempreture" Command="{Binding SortByTempretureCommand}" Grid.Column="1" BorderThickness="0"/>
+        <Button Content="Sort by Humidity" Command="{Binding SortByHumidityCommand}" Grid.Column="2" BorderThickness="0"/>
+        <Button Content="Sort by Mold risk" Command="{Binding SortByMoldRiskCommand}" Grid.Column="3" BorderThickness="0"/>
+        <Button Content="Sort by Location" Command="{Binding SortByLocationCommand}" Grid.Column="4" BorderThickness="0"/>
+        
+        <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5">
+            <DataGrid x:Name="LogDataGrid" ItemsSource="{Binding Logs}" CanUserAddRows="False" AutoGenerateColumns="False" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Time" Binding="{Binding Time}"/>
+                    <DataGridTextColumn Header="Location" Binding="{Binding Location}"/>
+                    <DataGridTextColumn Header="Avarage Tempreture" Binding="{Binding Tempreture}"/>
+                    <DataGridTextColumn Header="Avarage Humidity" Binding="{Binding Humidity}"/>
+                    <DataGridTextColumn Header="Mold risk" Binding="{Binding MoldRisk}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5">
+            <DatePicker SelectedDateFormat="Long" SelectedDate="{Binding SelectedDate}" DisplayDateStart="1/1/2016" DisplayDateEnd="1/10/2017"/>
+            <ComboBox SelectedItem="{Binding SelectedLocation}" ItemsSource="{Binding LocationList}"/>
+            <Button Content="Search" Command="{Binding SearchCommand}" Padding="10,0,10,0"/>
+            <Button Grid.Row="2" Content="Get all" Grid.Column="1" Command="{Binding GetAllCommand}"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="First day of winter" Command="{Binding FirstDayOfWinterCommand}" Padding="10,0,10,0"/>
+            <Button Grid.Row="2" Grid.Column="3" Content="First day of fall" Command="{Binding FirstDayOFallCommand}" Padding="10,0,10,0"/>
+            <Button Grid.Row="2" Content="Upload" Grid.Column="4" Command="{Binding UploadCommand}" Padding="10,0,10,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
