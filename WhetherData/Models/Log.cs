@@ -6,7 +6,6 @@ namespace WhetherData
 {
     public partial class Log
     {
-        public int Id { get; set; }
         public DateTime Time { get; set; }
         public string Location { get; set; }
         public double Tempreture { get; set; }

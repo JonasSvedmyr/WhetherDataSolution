@@ -25,12 +25,10 @@ namespace WhetherData
                     while ((line = reader.ReadLine()) != null)
                     {
                         tempArray = line.Split(',');
-
-                        //This takes up to much memory
                         tempArray2 = tempArray[2].Split('.');
-                        string test = $"{tempArray2[0]},{tempArray2[1]}";
+                        string Temp = $"{tempArray2[0]},{tempArray2[1]}";
 
-                        log = new DatabaseLog(DateTime.Parse(tempArray[0]), tempArray[1], double.Parse(test), double.Parse(tempArray[3]));
+                        log = new DatabaseLog(DateTime.Parse(tempArray[0]), tempArray[1], double.Parse(Temp), double.Parse(tempArray[3]));
                         context.Add(log);
                     }
                     context.SaveChanges();
