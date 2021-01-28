@@ -14,7 +14,7 @@ namespace WhetherData
         /// <param name="filePath"></param>
         public void UploadFromFile(string filePath)
         {
-            Log log;
+            DatabaseLog log;
             using (StreamReader reader = new StreamReader(filePath))
             {
                 string line;
@@ -30,7 +30,7 @@ namespace WhetherData
                         tempArray2 = tempArray[2].Split('.');
                         string test = $"{tempArray2[0]},{tempArray2[1]}";
 
-                        log = new Log(DateTime.Parse(tempArray[0]), tempArray[1], double.Parse(test), double.Parse(tempArray[3]));
+                        log = new DatabaseLog(DateTime.Parse(tempArray[0]), tempArray[1], double.Parse(test), double.Parse(tempArray[3]));
                         context.Add(log);
                     }
                     context.SaveChanges();

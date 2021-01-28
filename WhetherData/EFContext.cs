@@ -15,6 +15,6 @@ namespace WhetherData
         {
             optionsBuilder.UseSqlServer(connectionString);
         }
-        public DbSet<Log> logs { get; set; }
+        public DbSet<DatabaseLog> logs { get; set; }
     }
 }

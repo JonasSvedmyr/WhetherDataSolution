@@ -264,9 +264,10 @@ namespace WhetherData.ViewModels
                 dataFileReader.UploadFromFile(filePath);
                 MessageBox.Show("Upload completed");
             }
-            catch
+            catch(Exception e)
             {
                 MessageBox.Show("Upload failed");
+                MessageBox.Show(e.Message);
             }
         }
     }
