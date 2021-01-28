@@ -114,7 +114,7 @@ namespace WhetherData.ViewModels
                         Tempreture = g.Average(x => x.Tempreture),
                         Location = g.Key.Location,
                         Time = new DateTime(g.Key.Year, g.Key.Month, g.Key.Day),
-                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22 > 0 ? (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) : 0
+                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22
                     });
                 Logs = CheckMoldRisk(quary);
             }
@@ -139,7 +139,7 @@ namespace WhetherData.ViewModels
                         Tempreture = g.Average(x => x.Tempreture),
                         Location = g.Key.Location,
                         Time = new DateTime(g.Key.Year, g.Key.Month, g.Key.Day),
-                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22 > 0 ? (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) : 0 
+                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22
                     });
                 Logs = CheckMoldRisk(quary); ;
             }
@@ -166,7 +166,7 @@ namespace WhetherData.ViewModels
                         Tempreture = g.Average(x => x.Tempreture),
                         Location = g.Key.Location,
                         Time = new DateTime(g.Key.Year, g.Key.Month, g.Key.Day),
-                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22 > 0 ? (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) : 0 
+                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22 
                     });
 
                 GetFirstOfFiveDays(CheckMoldRisk(quary));
@@ -193,7 +193,7 @@ namespace WhetherData.ViewModels
                         Humidity = g.Average(x => x.Humidity),
                         Tempreture = g.Average(x => x.Tempreture),
                         Location = g.Key.Location, Time = new DateTime(g.Key.Year, g.Key.Month, g.Key.Day),
-                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22 > 0 ? (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) : 0
+                        MoldRisk = (g.Average(x => x.Humidity) - 78) * (g.Average(x => x.Tempreture) / 15) / 0.22
                     });
                 GetFirstOfFiveDays(CheckMoldRisk(quary));
             }
@@ -242,7 +242,7 @@ namespace WhetherData.ViewModels
             var Temp = quary.ToObservableCollection();
             foreach (var item in Temp)
             {
-                if (item.Tempreture < 0 || item.Humidity < 75)
+                if (item.Tempreture < 0 || item.Humidity < 75 || item.MoldRisk < 0)
                 {
                     item.MoldRisk = 0;
                 }
